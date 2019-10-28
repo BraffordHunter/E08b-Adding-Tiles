@@ -1,9 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scripts/paddle.gd" type="Script" id=1]
 [ext_resource path="res://Assets/paddle.png" type="Texture" id=2]
-[ext_resource path="res://Assets/ball.png" type="Texture" id=3]
-[ext_resource path="res://Tiles.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/ball.png" type="Texture" id=4]
+[ext_resource path="res://Tiles.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Tiles.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Assets/tile_gray.png" type="Texture" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 53.311, 12.2888 )
@@ -28,6 +30,7 @@ texture = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="Ball" type="RigidBody2D" parent="."]
+editor/display_folded = true
 position = Vector2( 475, 272 )
 mode = 2
 physics_material_override = SubResource( 2 )
@@ -35,32 +38,81 @@ gravity_scale = 0.0
 linear_velocity = Vector2( 200, -200 )
 linear_damp = 0.0
 angular_damp = 0.0
+script = ExtResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="Ball"]
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
 shape = SubResource( 3 )
 
 [node name="Wall" type="StaticBody2D" parent="."]
+editor/display_folded = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wall"]
 polygon = PoolVector2Array( 0, 640, 0, 0, 1024, 0, 1024, 640, 1088, 640, 1088, -64, -64, -64, -64, 640, 0, 640 )
 
-[node name="Tiles" parent="." instance=ExtResource( 4 )]
+[node name="Tiles" parent="." instance=ExtResource( 5 )]
 
-[node name="Tiles9" parent="." instance=ExtResource( 4 )]
+[node name="Grey Tiles" type="Node" parent="Tiles"]
 
-[node name="Tiles8" parent="." instance=ExtResource( 4 )]
+[node name="Tile" parent="Tiles/Grey Tiles" instance=ExtResource( 6 )]
 
-[node name="Tiles7" parent="." instance=ExtResource( 4 )]
+[node name="Sprite2" type="Sprite" parent="Tiles/Grey Tiles/Tile"]
+texture = ExtResource( 7 )
 
-[node name="Tiles6" parent="." instance=ExtResource( 4 )]
+[node name="Tile9" parent="Tiles/Grey Tiles" instance=ExtResource( 6 )]
 
-[node name="Tiles5" parent="." instance=ExtResource( 4 )]
+[node name="Sprite2" type="Sprite" parent="Tiles/Grey Tiles/Tile9"]
+texture = ExtResource( 7 )
 
-[node name="Tiles4" parent="." instance=ExtResource( 4 )]
+[node name="Tile8" parent="Tiles/Grey Tiles" instance=ExtResource( 6 )]
 
-[node name="Tiles3" parent="." instance=ExtResource( 4 )]
+[node name="Sprite2" type="Sprite" parent="Tiles/Grey Tiles/Tile8"]
+texture = ExtResource( 7 )
 
-[node name="Tiles2" parent="." instance=ExtResource( 4 )]
+[node name="Tile7" parent="Tiles/Grey Tiles" instance=ExtResource( 6 )]
+
+[node name="Sprite2" type="Sprite" parent="Tiles/Grey Tiles/Tile7"]
+texture = ExtResource( 7 )
+
+[node name="Tile6" parent="Tiles/Grey Tiles" instance=ExtResource( 6 )]
+
+[node name="Sprite2" type="Sprite" parent="Tiles/Grey Tiles/Tile6"]
+texture = ExtResource( 7 )
+
+[node name="Tile5" parent="Tiles/Grey Tiles" instance=ExtResource( 6 )]
+
+[node name="Sprite2" type="Sprite" parent="Tiles/Grey Tiles/Tile5"]
+texture = ExtResource( 7 )
+
+[node name="Tile4" parent="Tiles/Grey Tiles" instance=ExtResource( 6 )]
+
+[node name="Sprite2" type="Sprite" parent="Tiles/Grey Tiles/Tile4"]
+texture = ExtResource( 7 )
+
+[node name="Tile3" parent="Tiles/Grey Tiles" instance=ExtResource( 6 )]
+
+[node name="Sprite2" type="Sprite" parent="Tiles/Grey Tiles/Tile3"]
+texture = ExtResource( 7 )
+
+[node name="Tile2" parent="Tiles/Grey Tiles" instance=ExtResource( 6 )]
+
+[node name="Sprite2" type="Sprite" parent="Tiles/Grey Tiles/Tile2"]
+texture = ExtResource( 7 )
+
+[node name="Red Tiles" type="Node" parent="Tiles"]
+
+[node name="Tiles" parent="Tiles/Red Tiles" instance=ExtResource( 5 )]
+
+[node name="Green Tiles" type="Node" parent="Tiles"]
+
+[node name="Tiles" parent="Tiles/Green Tiles" instance=ExtResource( 5 )]
+
+[node name="Blue Tiles" type="Node" parent="Tiles"]
+
+[node name="Tiles" parent="Tiles/Blue Tiles" instance=ExtResource( 5 )]
+
+[node name="Purple Tiles" parent="Tiles" instance=ExtResource( 5 )]
+
+[node name="Tiles" parent="Tiles/Purple Tiles" instance=ExtResource( 5 )]
